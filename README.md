@@ -1,12 +1,25 @@
-# React + Vite
+# 🚚 Courier Service Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-featured courier service web application built using the MERN stack. It supports users to send parcels, riders to manage deliveries, and admins to oversee the system. Includes real-time parcel tracking, secure authentication, interactive map integration, and Stripe payment.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🧑‍💼 Role-based access: User, Rider & Admin
+- 📦 Send & manage parcels with full details
+- 📍 Real-time map integration to show service areas
+- 🔐 Firebase Authentication & JWT-secured APIs
+- 💳 Stripe payment integration for parcel charges
+- 🗂️ Admin dashboard for managing users, parcels & riders
+- 📊 Rider delivery tracking & status updates
+- ⚛️ Smooth and responsive UI using React & Tailwind CSS
+- ✨ Framer Motion animations for great UX
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend**: React, Tailwind CSS, DaisyUI, Framer Motion
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB
+- **Authentication**: Firebase Auth, JWT
+- **Payment**: Stripe
+- **Map**: Custom BD district map with marker integration
+
