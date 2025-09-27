@@ -37,9 +37,9 @@ const FAQ = () => {
   };
 
   return (
-    <div className="m-3 md:my-12 max-w-5xl mx-auto">
+    <div className="m-3 md:my-12 max-w-7xl mx-auto">
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold text-center mb-6"
+        className="text-3xl md:text-5xl font-extrabold text-center mb-6"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -53,7 +53,8 @@ const FAQ = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        Enhance posture, mobility, and well-being effortlessly. Achieve proper alignment, reduce pain, and strengthen your body with ease!
+        Enhance posture, mobility, and well-being effortlessly. Achieve proper
+        alignment, reduce pain, and strengthen your body with ease!
       </motion.p>
 
       <div className="flex flex-col gap-4">
@@ -61,7 +62,9 @@ const FAQ = () => {
           <motion.div
             key={index}
             className={`border rounded-2xl overflow-hidden shadow-lg ${
-              activeIndex === index ? "bg-primary/10 border-primary" : "bg-base-100 border-base-300"
+              activeIndex === index
+                ? "bg-primary/10 border-primary"
+                : "bg-base-100 border-base-300"
             }`}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

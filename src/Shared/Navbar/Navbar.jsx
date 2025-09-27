@@ -23,29 +23,29 @@ const Navbar = () => {
 
   const links = (
     <>
-      <li className="text-primary font-bold text-lg flex items-center gap-2">
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/"}>
           <FontAwesomeIcon icon={faHouse} /> Home
         </NavLink>
       </li>
-      <li className="text-primary font-bold text-lg flex items-center gap-2">
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/coverage"}>
           <FontAwesomeIcon icon={faMapLocationDot} /> Coverage
         </NavLink>
       </li>
-      <li className="text-primary font-bold text-lg flex items-center gap-2">
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/sendParcel"}>
           <FontAwesomeIcon icon={faBoxOpen} /> Send Parcel
         </NavLink>
       </li>
       {user && (
-        <li className="text-primary font-bold text-lg flex items-center gap-2">
+        <li className="text-primary font-bold flex items-center gap-2">
           <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/dashBoard"}>
             <FontAwesomeIcon icon={faTachometerAlt} /> Dash Board
           </NavLink>
         </li>
       )}
-      <li className="text-primary font-bold text-lg flex items-center gap-2">
+      <li className="text-primary font-bold flex items-center gap-2">
         <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/beARider"}>
           <FontAwesomeIcon icon={faMotorcycle} /> Be A Rider
         </NavLink>
@@ -54,7 +54,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-neutral/50 backdrop-blur-xl fixed top-0 right-0 left-0 z-50 shadow-lg shadow-primary/40 px-3 md:px-6">
+    <div className="navbar bg-neutral/50 backdrop-blur-xl fixed top-0 right-0 left-0 z-50 shadow-lg shadow-primary/40 md:px-3">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
@@ -101,12 +101,12 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleLogout}
-            className="btn rounded-lg btn-outline text-primary btn-secondary text-lg"
+            className="btn rounded-lg btn-outline text-primary btn-secondary"
           >
             Log Out
           </button>
         ) : (
-          <Link className="btn btn-outline rounded-lg btn-secondary bg-primary text-lg" to="/login">
+          <Link className="btn btn-outline rounded-lg btn-secondary bg-primary" to="/login">
             Login
           </Link>
         )}
