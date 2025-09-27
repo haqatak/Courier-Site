@@ -14,24 +14,31 @@ const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7];
 
 const ClientLogoSlider = () => {
   return (
-    <div data-aos="zoom-out-down" className="py-10 bg-base-200 px-4 md:px-8 lg:px-16 m-3 md:my-12 text-secondary">
-      <h2 className="text-xl md:text-3xl font-bold text-center mb-6">We've helped thousands of sales teams
+    <div>
+      {" "}
+      <h2 className="text-xl md:text-3xl font-bold text-center mb-6">
+        We've helped thousands of{" "}
+        <span className="text-secondary">sales teams</span>
       </h2>
-
-      <Marquee speed={50} gradient={false} pauseOnHover={true}>
-        {logos.map((logo, index) => (
-          <div
-            key={index}
-            className="flex items-center justify-center mx-12 md:mx-20"
-          >
-            <img
-              src={logo}
-              alt={`Client ${index + 1}`}
-              className="h-7 w-auto object-contain"
-            />
-          </div>
-        ))}
-      </Marquee>
+      <div
+        data-aos="zoom-out-down"
+        className="py-10 bg- px-4 md:px-8 lg:px-16 m-3 md:my-12 text-secondary bg-[#f1f1f1]"
+      >
+        <Marquee speed={50} gradient={false} pauseOnHover={true}>
+          {logos.map((logo, index) => (
+            <div
+              key={index}
+              className="flex items-center justify-center mx-12 md:mx-20"
+            >
+              <img
+                src={logo}
+                alt={`Client ${index + 1}`}
+                className="h-7 w-auto object-contain"
+              />
+            </div>
+          ))}
+        </Marquee>
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const RootLayouts = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="max-w-screen-xl mx-auto pt-12 md:pt-16">
+      <div className="max-w-screen-xl mx-auto pt-20">
         <Toaster position="top-center"></Toaster>
         <Outlet></Outlet>
       </div>{" "}

@@ -1,7 +1,6 @@
 import React from "react";
 import ServiceCard from "./Service.card";
 
-// Import icons from react-icons (you can change them to better match the services)
 import {
   FaShippingFast,
   FaMapMarkedAlt,
@@ -52,9 +51,15 @@ const services = [
 
 const Services = () => {
   return (
-    <section data-aos="zoom-in" data-aos-duration="2000"  className="px-4 py-12 md:px-10 lg:px-24 text-center text-secondary m-3 md:my-12 bg-secondary">
-      <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Our Service</h2>
-      <p className=" mb-10 max-w-3xl mx-auto text-white">
+    <section
+      data-aos="zoom-in"
+      data-aos-duration="2000"
+      className="px-4 text-center m-3 my-12 md:my-16"
+    >
+      <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        Our <span className="text-secondary">Service</span>
+      </h2>
+      <p className=" mb-10 max-w-3xl mx-auto text-info/80">
         Enjoy fast, reliable parcel delivery with real-time tracking and zero
         hassle. From personal packages to business shipments — we deliver on
         time, every time.
