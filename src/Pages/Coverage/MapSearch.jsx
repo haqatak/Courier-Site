@@ -10,7 +10,7 @@ const MapSearch = ({ searchTerm, onChange, onSubmit }) => {
         value={searchTerm}
         onChange={onChange}
       />
-      <button className="btn btn-primary text-black">Search</button>
+      <button className="btn btn-secondary">Search</button>
     </form>
   );
 };

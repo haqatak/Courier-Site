@@ -20,8 +20,8 @@ const Coverage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base-200 py-10 px-4 md:px-6">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-2">
+    <div className="min-h-screen py-10 px-4 md:px-6">
+      <h1 className="text-3xl md:text-4xl font-bold text-center text-secondary mb-2">
         We Are Available in 64 Districts
       </h1>
       <MapSearch

@@ -54,8 +54,8 @@ const BeARider = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-base-100 shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold mb-6">Become a Rider</h2>
+    <div className="max-w-xl mx-auto p-6 bg-accent mt-8 md:mt-12 shadow-lg rounded-lg">
+      <h2 className="text-3xl font-bold mb-6 text-secondary">Become a Rider</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
         <input
           className="input input-bordered w-full"
@@ -132,7 +132,7 @@ const BeARider = () => {
           {...register("bikeRegNo", { required: true })}
         />
 
-        <button className="btn bg-primary text-white mt-4" type="submit">
+        <button className="btn btn-primary btn-outline mt-4" type="submit">
           Submit Application
         </button>
       </form>
