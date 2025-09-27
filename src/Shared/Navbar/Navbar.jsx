@@ -27,7 +27,7 @@ const Navbar = () => {
 
 const links = (
   <>
-    <li className="text-primary font-bold text-xl flex items-center gap-2">
+    <li className="text-primary font-bold text-lg flex items-center gap-2">
       <NavLink
         className={({ isActive }) => (isActive ? "underline" : "")}
         to={"/"}
@@ -35,7 +35,7 @@ const links = (
         <FontAwesomeIcon icon={faHouse} /> Home
       </NavLink>
     </li>
-    <li className="text-primary font-bold text-xl flex items-center gap-2">
+    <li className="text-primary font-bold text-lg flex items-center gap-2">
       <NavLink
         className={({ isActive }) => (isActive ? "underline" : "")}
         to={"/coverage"}
@@ -43,7 +43,7 @@ const links = (
         <FontAwesomeIcon icon={faMapLocationDot} /> Coverage
       </NavLink>
     </li>
-    <li className="text-primary font-bold text-xl flex items-center gap-2">
+    <li className="text-primary font-bold text-lg flex items-center gap-2">
       <NavLink
         className={({ isActive }) => (isActive ? "underline" : "")}
         to={"/sendParcel"}
@@ -52,7 +52,7 @@ const links = (
       </NavLink>
     </li>
     {user && (
-      <li className="text-primary font-bold text-xl flex items-center gap-2">
+      <li className="text-primary font-bold text-lg flex items-center gap-2">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
           to={"/dashBoard"}
@@ -61,7 +61,7 @@ const links = (
         </NavLink>
       </li>
     )}
-    <li className="text-primary font-bold text-xl flex items-center gap-2">
+    <li className="text-primary font-bold text-lg flex items-center gap-2">
       <NavLink
         className={({ isActive }) => (isActive ? "underline" : "")}
         to={"/beARider"}
@@ -69,7 +69,7 @@ const links = (
         <FontAwesomeIcon icon={faMotorcycle} /> Be A Rider
       </NavLink>
     </li>
-    <li className="text-primary font-bold text-xl flex items-center gap-2">
+    <li className="text-primary font-bold text-lg flex items-center gap-2">
       <NavLink
         className={({ isActive }) => (isActive ? "underline" : "")}
         to={"/"}
