@@ -191,18 +191,18 @@ const SendParcel = () => {
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto space-y-10 text-black bg-primary">
-      <h1 className="text-3xl font-bold text-center">Send a Parcel</h1>
-      <p className="text-center text-gray-500">
+    <div className="px-6 max-w-6xl mx-auto space-y-5 my-8">
+      <h1 className="text-3xl font-bold text-center text-secondary">Parcel Form</h1>
+      <p className="text-center text-primary">
         Door to door delivery made easy
       </p>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
         {/* Parcel Info */}
-        <fieldset className="border border-base-300 rounded-xl p-4">
-          <legend className="text-lg font-semibold mb-2">Parcel Info</legend>
+        <fieldset className="border border-secondary rounded-xl p-4 bg-accent">
+          <legend className="text-lg font-bold mb-2">Parcel Info</legend>
 
-          <div className="form-control">
+          <div className="form-control text-primary font-semibold">
             <label className="label font-semibold">Parcel Type</label>
             <div className="flex gap-6">
               <label className="label cursor-pointer">
@@ -232,7 +232,7 @@ const SendParcel = () => {
           </div>
 
           <div className="form-control mt-4">
-            <label className="label">Title</label>
+            <label className="label text-info">Title</label><br />
             <input
               type="text"
               {...register("title", { required: true })}
@@ -246,7 +246,7 @@ const SendParcel = () => {
 
           {parcelType === "non-document" && (
             <div className="form-control mt-4">
-              <label className="label">Weight (kg)</label>
+              <label className="text-info label">Weight (kg)</label><br />
               <input
                 type="number"
                 step="0.01"
@@ -261,7 +261,7 @@ const SendParcel = () => {
         {/* Sender & Receiver Info Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Sender Info */}
-          <fieldset className="border border-base-300 rounded-xl p-4">
+          <fieldset className="border border-secondary bg-accent text-primary font-semibold rounded-xl p-4">
             <legend className="text-lg font-semibold mb-2">Sender Info</legend>
             <div className="space-y-4">
               <input
@@ -315,7 +315,7 @@ const SendParcel = () => {
           </fieldset>
 
           {/* Receiver Info */}
-          <fieldset className="border border-base-300 rounded-xl p-4">
+          <fieldset className="border border-secondary bg-accent text-primary font-semibold rounded-xl p-4">
             <legend className="text-lg font-semibold mb-2">
               Receiver Info
             </legend>
@@ -375,7 +375,7 @@ const SendParcel = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="btn btn-primary bg-white text-secondary"
+            className="btn btn-secondary btn-outline bg-accent"
           >
             Submit Parcel
           </button>

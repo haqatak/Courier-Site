@@ -54,88 +54,95 @@ const BeARider = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-6 bg-accent mt-8 md:mt-12 shadow-lg rounded-lg">
-      <h2 className="text-3xl font-bold mb-6 text-secondary">Become a Rider</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
-        <input
-          className="input input-bordered w-full"
-          defaultValue={user?.displayName}
-          readOnly
-        />
+    <div className="max-w-xl mx-auto  mt-8">
+      <h2 className="text-secondary font-bold text-4xl text-center my-4">
+        Rider Form
+      </h2>
+      <div className=" p-6 bg-accent shadow-lg rounded-lg">
+        <h2 className="text-3xl font-bold mb-6 text-primary">Become a Rider</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="grid gap-4">
+          <input
+            className="input input-bordered w-full"
+            defaultValue={user?.displayName}
+            readOnly
+          />
 
-        <input
-          className="input input-bordered w-full"
-          defaultValue={user?.email}
-          readOnly
-        />
+          <input
+            className="input input-bordered w-full"
+            defaultValue={user?.email}
+            readOnly
+          />
 
-        <input
-          className="input input-bordered w-full"
-          placeholder="Your Age"
-          type="number"
-          {...register("age", { required: true, min: 18 })}
-        />
-        {errors.age && (
-          <p className="text-red-500 text-sm">Minimum age is 18</p>
-        )}
+          <input
+            className="input input-bordered w-full"
+            placeholder="Your Age"
+            type="number"
+            {...register("age", { required: true, min: 18 })}
+          />
+          {errors.age && (
+            <p className="text-red-500 text-sm">Minimum age is 18</p>
+          )}
 
-        <select
-          className="select select-bordered w-full"
-          {...register("region", { required: true })}
-        >
-          <option value="">Select Region</option>
-          {[...new Set(serviceCenters.map((s) => s.region))]?.map((region) => (
-            <option key={region} value={region}>
-              {region}
-            </option>
-          ))}
-        </select>
+          <select
+            className="select select-bordered w-full"
+            {...register("region", { required: true })}
+          >
+            <option value="">Select Region</option>
+            {[...new Set(serviceCenters.map((s) => s.region))]?.map(
+              (region) => (
+                <option key={region} value={region}>
+                  {region}
+                </option>
+              )
+            )}
+          </select>
 
-        <select
-          className="select select-bordered w-full"
-          {...register("district", { required: true })}
-          disabled={!selectedRegion}
-        >
-          <option value="">Select District</option>
-          {districts?.map((district) => (
-            <option key={district} value={district}>
-              {district}
-            </option>
-          ))}
-        </select>
+          <select
+            className="select select-bordered w-full"
+            {...register("district", { required: true })}
+            disabled={!selectedRegion}
+          >
+            <option value="">Select District</option>
+            {districts?.map((district) => (
+              <option key={district} value={district}>
+                {district}
+              </option>
+            ))}
+          </select>
 
-        <input
-          className="input input-bordered w-full"
-          placeholder="Phone Number"
-          type="tel"
-          {...register("phone", { required: true })}
-        />
+          <input
+            className="input input-bordered w-full"
+            placeholder="Phone Number"
+            type="tel"
+            {...register("phone", { required: true })}
+          />
 
-        <input
-          className="input input-bordered w-full"
-          placeholder="National ID Number"
-          type="text"
-          {...register("nid", { required: true })}
-        />
+          <input
+            className="input input-bordered w-full"
+            placeholder="National ID Number"
+            type="text"
+            {...register("nid", { required: true })}
+          />
 
-        <input
-          className="input input-bordered w-full"
-          placeholder="Bike Brand (e.g. Honda)"
-          type="text"
-          {...register("bikeBrand", { required: true })}
-        />
+          <input
+            className="input input-bordered w-full"
+            placeholder="Bike Brand (e.g. Honda)"
+            type="text"
+            {...register("bikeBrand", { required: true })}
+          />
 
-        <input
-          className="input input-bordered w-full"
-          placeholder="Bike Registration Number"
-          type="text"
-          {...register("bikeRegNo", { required: true })}
-        />
+          <input
+            className="input input-bordered w-full"
+            placeholder="Bike Registration Number"
+            type="text"
+            {...register("bikeRegNo", { required: true })}
+          />
 
-        <button className="btn btn-primary btn-outline mt-4" type="submit">
-          Submit Application
-        </button>
-      </form>
+          <button className="btn btn-primary btn-outline mt-4" type="submit">
+            Submit Application
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
