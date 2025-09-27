@@ -6,14 +6,14 @@ import { Toaster } from "react-hot-toast";
 
 const RootLayouts = () => {
   return (
-   <div className="bg-gray-200">
-     <div className="max-w-screen-xl mx-auto">
+    <div>
       <Navbar></Navbar>
-      <Toaster position="top-center"></Toaster>
-      <Outlet></Outlet>
+      <div className="max-w-screen-xl mx-auto">
+        <Toaster position="top-center"></Toaster>
+        <Outlet></Outlet>
+      </div>{" "}
       <Footer></Footer>
     </div>
-   </div>
   );
 };
 

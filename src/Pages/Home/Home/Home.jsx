@@ -8,7 +8,7 @@ import FAQ from '../FAQ/FAQ'
 
 const Home = () => {
   return (
-    <div>
+    <div className='bgwhit'>
         <Banner></Banner>
         <Services></Services>
         <ClientLogoSlider></ClientLogoSlider>

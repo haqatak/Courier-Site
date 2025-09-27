@@ -3,6 +3,17 @@ import { Link, NavLink } from "react-router";
 import Logo from "../Logo/Logo";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faMapLocationDot,
+  faBoxOpen,
+  faTachometerAlt,
+  faMotorcycle,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
+
+
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -13,65 +24,65 @@ const Navbar = () => {
       .catch((error) => console.log(error));
   };
 
-  const links = (
-    <>
-      <li className="text-secondary font-medium text-lg">
+
+const links = (
+  <>
+    <li className="text-primary font-bold text-xl flex items-center gap-2">
+      <NavLink
+        className={({ isActive }) => (isActive ? "underline" : "")}
+        to={"/"}
+      >
+        <FontAwesomeIcon icon={faHouse} /> Home
+      </NavLink>
+    </li>
+    <li className="text-primary font-bold text-xl flex items-center gap-2">
+      <NavLink
+        className={({ isActive }) => (isActive ? "underline" : "")}
+        to={"/coverage"}
+      >
+        <FontAwesomeIcon icon={faMapLocationDot} /> Coverage
+      </NavLink>
+    </li>
+    <li className="text-primary font-bold text-xl flex items-center gap-2">
+      <NavLink
+        className={({ isActive }) => (isActive ? "underline" : "")}
+        to={"/sendParcel"}
+      >
+        <FontAwesomeIcon icon={faBoxOpen} /> Send Parcel
+      </NavLink>
+    </li>
+    {user && (
+      <li className="text-primary font-bold text-xl flex items-center gap-2">
         <NavLink
           className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/"}
+          to={"/dashBoard"}
         >
-          Home
+          <FontAwesomeIcon icon={faTachometerAlt} /> Dash Board
         </NavLink>
       </li>
-      <li className="text-secondary font-medium text-lg">
-        <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/coverage"}
-        >
-          Coverage
-        </NavLink>
-      </li>
-      <li className="text-secondary font-medium text-lg">
-        <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/sendParcel"}
-        >
-          Send Parcel
-        </NavLink>
-      </li>
-      {user && (
-        <>
-          <li className="text-secondary font-medium text-lg">
-            <NavLink
-              className={({ isActive }) => (isActive ? "underline" : "")}
-              to={"/dashBoard"}
-            >
-              Dash Board
-            </NavLink>
-          </li>
-        </>
-      )}
-      <li className="text-secondary font-medium text-lg">
-        <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/beARider"}
-        >
-          Be A Rider
-        </NavLink>
-      </li>
-      <li className="text-secondary font-medium text-lg">
-        <NavLink
-          className={({ isActive }) => (isActive ? "underline" : "")}
-          to={"/"}
-        >
-          About Us
-        </NavLink>
-      </li>
-    </>
-  );
+    )}
+    <li className="text-primary font-bold text-xl flex items-center gap-2">
+      <NavLink
+        className={({ isActive }) => (isActive ? "underline" : "")}
+        to={"/beARider"}
+      >
+        <FontAwesomeIcon icon={faMotorcycle} /> Be A Rider
+      </NavLink>
+    </li>
+    <li className="text-primary font-bold text-xl flex items-center gap-2">
+      <NavLink
+        className={({ isActive }) => (isActive ? "underline" : "")}
+        to={"/"}
+      >
+        <FontAwesomeIcon icon={faCircleInfo} /> About Us
+      </NavLink>
+    </li>
+  </>
+);
+
 
   return (
-    <div className="navbar bg-secondary  rounded-lg mb-2 shadow-sm">
+    <div className="navbar bg-neutral/50 backdrop-blur-xl fixed top-0 right-0 left-0 z-50 shadow-xl shadow-primary/40">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -93,7 +104,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-accent rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -103,35 +114,23 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <div className="bg-white/20 dark:bg-black/20 p-3 rounded-2xl">
+      <div className="navbar-end flex gap-2">
+        <div className="bg-neutral rounded-2xl">
           <ThemeToggle />
         </div>
 
         {user ? (
-          <div className="relative">
-            <img
-              className="w-12 h-12 rounded-2xl hover:opacity-100 cursor-pointer peer"
-              src={user?.photoURL || "https://via.placeholder.com/150"}
-              alt="Profile"
-            />
-            <div className="absolute right-0 top-14 bg-white dark:bg-cyan-700 text-black dark:text-white shadow-lg rounded-lg p-2 opacity-0 peer-hover:opacity-100 hover:opacity-100 transition-opacity z-10 min-w-[200px] pointer-events-none peer-hover:pointer-events-auto hover:pointer-events-auto">
-              <p className="text-md font-semibold mb-2">
-                Name: {user?.displayName || "User"}
-              </p>
-              <p className="text-md font-semibold mb-2">
-                Email: {user?.email || "user"}
-              </p>
-              <button
-                onClick={handleLogout}
-                className="bg-red-500 text-white px-3 py-1 rounded text-md hover:bg-[#f3f3e0] hover:text-red-500 w-full"
-              >
-                Log Out
-              </button>
-            </div>
-          </div>
+          <button
+            onClick={handleLogout}
+            className="btn btn-outline rounded-lg btn-secondary bg-primary text-lg"
+          >
+            Log Out
+          </button>
         ) : (
-          <Link className="btn" to="/login">
+          <Link
+            className="btn btn-outline rounded-lg btn-secondary bg-primary text-lg"
+            to="/login"
+          >
             Login
           </Link>
         )}
