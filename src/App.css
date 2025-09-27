@@ -1,14 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
-}
+@plugin "daisyui";
 
 @plugin "daisyui/theme" {
   name: "light";
-  default: true;
-  --color-primary: #caeb66;
-  --color-secondary: #03373D;
+  --color-primary: #03373d;
+  --color-secondary: #caeb66;
+  --color-accent: #e8eae3;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  --color-primary: #1ba098;
+  --color-secondary: #deb992;
+  --color-accent: #051622;
+;
 }
 
 body{
