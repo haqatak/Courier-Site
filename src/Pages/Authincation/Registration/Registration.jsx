@@ -89,12 +89,12 @@ const Registration = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card bg-accent w-full max-w-sm shrink-0 shadow-2xl">
       <form onSubmit={handleSubmit(onSubmit)} className="card-body">
         <fieldset className="fieldset">
-          <h1 className="text-5xl font-bold">Regisgration now!</h1>
+          <h1 className="text-5xl font-bold text-primary">Regisgration now!</h1>
 
-          <label className="label">Name</label>
+          <label className="label text-secondary">Name</label>
           <input
             type="text"
             className="input"
@@ -105,7 +105,7 @@ const Registration = () => {
             <p className="text-red-500">Name is required</p>
           )}
 
-          <label className="label">Profile</label>
+          <label className="label text-secondary">Profile</label>
           <input
             type="file"
             className="input"
@@ -113,7 +113,7 @@ const Registration = () => {
             onChange={handleImageUpload}
           />
 
-          <label className="label">Email</label>
+          <label className="label text-secondary">Email</label>
           <input
             type="email"
             className="input"
@@ -124,7 +124,7 @@ const Registration = () => {
             <p className="text-red-500">Email is required</p>
           )}
 
-          <label className="label">Password</label>
+          <label className="label text-secondary">Password</label>
           <input
             type="password"
             className="input"
@@ -139,7 +139,7 @@ const Registration = () => {
               Password must be atleast 6 Charecters
             </p>
           )}
-          <button className="btn bg-primary mt-4">Registration</button>
+          <button className="btn btn-secondary my-3">Registration</button>
           <p>
             Already have an acoount?
             <Link to="/logIn" className="btn-link text-secondary ml-3">

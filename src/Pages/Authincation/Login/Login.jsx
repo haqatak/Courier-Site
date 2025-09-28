@@ -27,12 +27,12 @@ const Login = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+    <div className="card  bg-accent w-full max-w-lg shrink-0 shadow-xl shadow-primary/40">
       <div className="card-body">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <fieldset className="fieldset">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <label className="label">Email</label>
+          <fieldset className="">
+            <h1 className="text-5xl font-bold text-primary my-3">Login now!</h1>
+            <label className="label text-secondary">Email</label><br />
             <input
               type="email"
               className="input"
@@ -40,7 +40,7 @@ const Login = () => {
               placeholder="Email"
             />
 
-            <label className="label">Password</label>
+            <label className="label text-secondary">Password</label><br />
             <input
               type="password"
               className="input"
@@ -58,12 +58,8 @@ const Login = () => {
                 Password must be atleast 6 Charecters
               </p>
             )}
-            <div>
-              <a className="link link-hover">Forgot password?</a>
-            </div>
-
-            <button className="btn btn-primary text-black mt-4">Login</button>
-            <p>
+            <button className="w-full btn btn-secondary my-4 ">Login</button>
+            <p className="text-info">
               Don't have an acoount?
               <Link to="/registration" className="btn-link text-secondary ml-3">
                 Register

@@ -1,24 +1,29 @@
 import React from "react";
 import { Outlet } from "react-router";
-import img from "../assets/authimage.png";
 import Logo from "../Shared/Logo/Logo";
+import Lottie from "lottie-react";
+import authAnimation from "../assets/Login.json"
+import DashboardWrapper from "../Shared/DashboardWrapper/DashboardWrapper";
 
-const AuthLayut = () => {
+const AuthLayout = () => {
   return (
-    <div>
-      <div className="bg-base-200 p-12 max-w-screen-xl mx-auto">
-        <Logo></Logo>
-        <div className="hero-content flex-col lg:flex-row-reverse">
+    <DashboardWrapper>
+      <div className="p-2 md:p-12 max-w-screen-xl mx-auto flex flex-col items-center justify-center gap-5 mt-12">
+        <Logo />
+        <div className="hero-content flex-col md:flex  gap-20 lg:flex-row-reverse">
+          {/* Lottie Animation */}
           <div className="flex-1">
-            <img src={img} className="max-w-sm rounded-lg shadow-2xl" />
+            <Lottie animationData={authAnimation} loop={true} className="max-w-sm" />
           </div>
+
+          {/* Auth Pages */}
           <div className="flex-1">
-            <Outlet></Outlet>
+            <Outlet />
           </div>
         </div>
       </div>
-    </div>
+    </DashboardWrapper>
   );
 };
 
-export default AuthLayut;
+export default AuthLayout;

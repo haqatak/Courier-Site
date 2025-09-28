@@ -36,11 +36,11 @@ const SocialLogin = () => {
 
   return (
     <div>
-      <p>Or</p>
+      <p className="text-center font-bold text-primary">Or</p>
       <button
         type="button"
         onClick={handleGoogleUser}
-        className="btn w-full mt-3 bg-white text-black border-[#e5e5e5]"
+        className="btn w-full mt-3 bg-neutral text-info"
       >
         <svg
           aria-label="Google logo"
