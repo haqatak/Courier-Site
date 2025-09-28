@@ -5,27 +5,22 @@ import error from "../../assets/404.json";
 
 const Unauthorized = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-6">
-      <div className="bg-white shadow-lg rounded-lg p-10 max-w-md text-center">
+    <div className="flex flex-col items-center justify-center min-h-screen  px-6">
+      <div className="bg-accent shadow-lg rounded-lg p-10 max-w-md text-center">
         {/* 🔹 Lottie animation */}
-        <Player
-          autoplay
-          loop
-          src={error}
-          className="w-52 h-52 mx-auto mb-4"
-        />
+        <Player autoplay loop src={error} className="w-52 h-52 mx-auto mb-4" />
 
-        <div className="text-red-500 text-6xl mb-4">
+        <div className="text-secondary text-6xl mb-4">
           <FaLock />
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Access Denied</h1>
-        <p className="text-gray-600 mb-6">
+        <h1 className="text-3xl font-bold text-primary mb-2">Access Denied</h1>
+        <p className="text-info mb-6">
           You do not have permission to view this page.
         </p>
         <Link
           to="/"
-          className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
+          className="inline-block bg-secondary text-accent font-bold px-6 py-2 rounded hover:bg-secondary/60 transition"
         >
           Go to Home
         </Link>
