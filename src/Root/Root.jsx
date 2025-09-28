@@ -71,7 +71,7 @@ export const router = createBrowserRouter([
         },
       },
       {
-        path: "unauthorized",
+        path: "*",
         Component: Unauthorized,
       },
     ],

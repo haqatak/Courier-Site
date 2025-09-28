@@ -54,7 +54,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-neutral/50 backdrop-blur-xl fixed top-0 right-0 left-0 z-50 shadow-lg shadow-primary/40 md:px-3">
+    <div className="navbar bg-neutral/50 backdrop-blur-xl fixed top-0 w-full z-50 shadow-lg shadow-primary/40 px-3 md:px-6">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
@@ -62,12 +62,12 @@ const Navbar = () => {
           <label tabIndex={0} className="btn btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </label>
           <ul
@@ -79,24 +79,19 @@ const Navbar = () => {
         </div>
 
         {/* Logo */}
-        <div className="hidden md:flex lg:hidden">
-          <Logo />
-        </div>
-        <div className="hidden lg:flex">
+        <div className="flex-1 md:flex justify-center md:justify-start">
           <Logo />
         </div>
       </div>
 
       {/* Navbar Center */}
-      <div className="navbar-center hidden md:flex lg:flex">
+      <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 gap-2">{links}</ul>
       </div>
 
       {/* Navbar End */}
-      <div className="navbar-end flex gap-2">
-        <div className="bg-neutral rounded-2xl">
-          <ThemeToggle />
-        </div>
+      <div className="navbar-end flex items-center gap-2">
+        <ThemeToggle />
 
         {user ? (
           <button

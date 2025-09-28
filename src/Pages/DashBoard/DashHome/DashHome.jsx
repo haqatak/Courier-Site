@@ -10,7 +10,11 @@ const DashHome = () => {
   const { role, isLoading } = useUserRole();
 
   if (isLoading) {
-    return <Loading></Loading>;
+    return (
+      <div>
+        <Loading></Loading>
+      </div>
+    );
   }
 
   if (role === "user") {

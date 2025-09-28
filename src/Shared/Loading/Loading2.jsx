@@ -1,7 +1,7 @@
 import { Player } from "@lottiefiles/react-lottie-player";
-import sandyLoading from "../../assets/Sandy Loading.json";
+import sandyLoading from "../../assets/LoadingBall.json";
 
-const Loading = () => {
+const Loading2 = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-primary/50 z-50">
       <Player
@@ -15,4 +15,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default Loading2;

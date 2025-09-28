@@ -191,7 +191,7 @@ const SendParcel = () => {
   };
 
   return (
-    <div className="px-6 max-w-6xl mx-auto space-y-5 my-8">
+    <div className="px-6 max-w-7xl mx-auto space-y-5 my-8">
       <h1 className="text-3xl font-bold text-center text-secondary">Parcel Form</h1>
       <p className="text-center text-primary">
         Door to door delivery made easy
