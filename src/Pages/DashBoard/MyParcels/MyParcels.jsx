@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import ParcelTable from "./ParcelTable";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router";
+import Loading2 from '../../../Shared/Loading/Loading2'
 
 const MyParcels = () => {
   const { user } = use(AuthContext);
@@ -61,10 +62,10 @@ const MyParcels = () => {
   };
 
   return (
-    <div className="px-2 md:px-10 w-full my-8 md:my-12">
+    <div className="px-2 md:px-8 w-full my-8 md:my-12">
       <h2 className="text-4xl text-center text-secondary font-bold mb-4">My Parcels</h2>
       {isLoading ? (
-        <p className="text-center">Loading...</p>
+        <Loading2></Loading2>
       ) : (
         <ParcelTable
           parcels={parcels}

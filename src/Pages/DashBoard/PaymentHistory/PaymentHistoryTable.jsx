@@ -1,52 +1,83 @@
 import React from "react";
+import { motion } from "framer-motion";
 
-const PaymentHistoryTable = ({ payments }) => {
+const tableVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const PaymentHistoryTable = ({ payments, loading }) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-gray-100">
-            <th className="border border-gray-300 px-4 py-2">Transaction ID</th>
-            <th className="border border-gray-300 px-4 py-2">Parcel ID</th>
-            <th className="border border-gray-300 px-4 py-2">Amount (USD)</th>
-            <th className="border border-gray-300 px-4 py-2">Payment Method</th>
-            <th className="border border-gray-300 px-4 py-2">Status</th>
-            <th className="border border-gray-300 px-4 py-2">Paid At</th>
+    <motion.div
+      className="overflow-x-auto"
+      initial="hidden"
+      animate="show"
+      variants={tableVariants}
+    >
+      <table className="table w-full shadow-md rounded-xl overflow-hidden">
+        <thead className="bg-primary text-neutral font-semibold text-lg">
+          <tr>
+            <th>Transaction ID</th>
+            <th>Parcel ID</th>
+            <th>Amount</th>
+            <th>Method</th>
+            <th>Status</th>
+            <th>Paid At</th>
           </tr>
         </thead>
-        <tbody>
-          {payments.length === 0 && (
+
+        <motion.tbody
+          initial="hidden"
+          animate="show"
+          variants={{
+            show: { transition: { staggerChildren: 0.08 } },
+          }}
+        >
+          {loading ? (
             <tr>
-              <td colSpan="7" className="text-center p-4">
+              <td colSpan="6" className="text-center py-6">
+                <span className="loading loading-spinner loading-lg text-primary"></span>
+              </td>
+            </tr>
+          ) : payments.length === 0 ? (
+            <tr>
+              <td colSpan="6" className="text-center py-6 text-info font-medium">
                 No payment history found.
               </td>
             </tr>
+          ) : (
+            payments.map((payment) => (
+              <motion.tr
+                key={payment.transactionId}
+                variants={tableVariants}
+                className="bg-accent hover:bg-primary/30 transition-colors duration-300 text-center"
+              >
+                <td className="px-4 py-2 break-all">{payment.transactionId}</td>
+                <td className="px-4 py-2">{payment.parcelId}</td>
+                <td className="px-4 py-2 font-semibold text-secondary">
+                  ${payment.amount.toFixed(2)}
+                </td>
+                <td className="px-4 py-2">{payment.paymentMethod}</td>
+                <td className="px-4 py-2">
+                  <span
+                    className={`badge px-3 py-2 rounded-lg text-sm ${
+                      payment.status === "paid"
+                        ? "bg-primary text-neutral"
+                        : "bg-secondary text-neutral"
+                    }`}
+                  >
+                    {payment.status}
+                  </span>
+                </td>
+                <td className="px-4 py-2">
+                  {new Date(payment.paid_At).toLocaleString()}
+                </td>
+              </motion.tr>
+            ))
           )}
-          {payments.map((payment) => (
-            <tr key={payment.transactionId} className="text-center">
-              <td className="border border-gray-300 px-4 py-2 break-all">
-                {payment.transactionId}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {payment.parcelId}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                ${payment.amount.toFixed(2)}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {payment.paymentMethod}
-              </td>
-              <td className="border border-gray-300 px-4 py-2 capitalize">
-                {payment.status}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {new Date(payment.paid_At).toLocaleString()}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        </motion.tbody>
       </table>
-    </div>
+    </motion.div>
   );
 };
 
