@@ -69,93 +69,98 @@ const DashLayout = () => {
               className="drawer-overlay"
             ></label>
 
-            <ul className="menu bg-accent text-primary font-bold min-h-full w-80 p-4">
+            <ul className="menu bg-accent text-primary font-bold min-h-full w-80 p-4 space-y-2">
+              {/* Logo */}
               <li>
-                {" "}
-                <Logo></Logo>
+                <Logo />
               </li>
-              {/* Sidebar content here */}
+
+              {/* Common Links */}
               <li>
                 <Link to={"/"}>
-                  <FiHome style={{ marginRight: 8 }} />
+                  <FiHome className="text-secondary mr-2" />
                   Back to Home
                 </Link>
-              </li>{" "}
+              </li>
               <li>
-                <Link to={"/dashBoard"}>
-                  <FiHome style={{ marginRight: 8 }} />
-                  Dash Layout
+                <Link to={"/dashboard"}>
+                  <FiHome className="text-secondary mr-2" />
+                  Dashboard
                 </Link>
               </li>
               <li>
                 <Link to={"/dashboard/myParcel"}>
-                  <FiPackage style={{ marginRight: 8 }} />
+                  <FiPackage className="text-secondary mr-2" />
                   My Parcel
                 </Link>
               </li>
               <li>
                 <Link to={"/dashboard/paymentHistory"}>
-                  <FiCreditCard style={{ marginRight: 8 }} />
+                  <FiCreditCard className="text-secondary mr-2" />
                   Payment History
                 </Link>
               </li>
               <li>
                 <Link to={"/dashboard/track"}>
-                  <FiMapPin style={{ marginRight: 8 }} />
+                  <FiMapPin className="text-secondary mr-2" />
                   Track a Package
                 </Link>
               </li>
               <li>
                 <Link to={"/dashboard/profile"}>
-                  <FiUser style={{ marginRight: 8 }} />
+                  <FiUser className="text-secondary mr-2" />
                   Update Profile
                 </Link>
               </li>
+
+              {/* Rider Links */}
               {role === "rider" && (
                 <>
                   <li>
                     <Link to={"/dashboard/pendingDeliveries"}>
-                      <FaTasks style={{ marginRight: 8 }} />
+                      <FaTasks className="text-secondary mr-2" />
                       Pending Deliveries
                     </Link>
                   </li>
                   <li>
                     <Link to={"/dashboard/completedDeliveries"}>
-                      <FaCheckCircle style={{ marginRight: 8 }} />
+                      <FaCheckCircle className="text-secondary mr-2" />
                       Completed Deliveries
                     </Link>
                   </li>
                   <li>
                     <Link to={"/dashboard/myEarnigs"}>
-                      <FaWallet style={{ marginRight: 8 }} />
-                      My Earnigs
+                      <FaWallet className="text-secondary mr-2" />
+                      My Earnings
                     </Link>
                   </li>
                 </>
               )}
+
+              {/* Admin Links */}
               {role === "admin" && (
                 <>
                   <li>
                     <Link to="/dashboard/assignRider">
-                      <FaMotorcycle style={{ marginRight: 8 }} />
+                      <FaMotorcycle className="text-secondary mr-2" />
                       Assign Rider
                     </Link>
                   </li>
                   <li>
                     <Link to="/dashboard/activeRiders">
-                      <FiCheckCircle style={{ marginRight: 8 }} />
+                      <FiCheckCircle className="text-secondary mr-2" />
                       Active Riders
                     </Link>
                   </li>
                   <li>
                     <Link to="/dashboard/pendingRiders">
-                      <FiClock style={{ marginRight: 8 }} />
+                      <FiClock className="text-secondary mr-2" />
                       Pending Riders
                     </Link>
                   </li>
                   <li>
                     <Link to="/dashboard/make-admin">
-                      <FaUserShield style={{ marginRight: 8 }} />
+                      <FaUserShield className="text-secondary mr-2" />
                       Make Admin
                     </Link>
                   </li>
