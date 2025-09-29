@@ -53,12 +53,13 @@ const PendingDeliveries = () => {
     );
   };
 
-  if (isLoading) return <Loading2></Loading2>;
+  if (isLoading) return <Loading2 />;
+
   if (deliveries.length === 0)
-    return <p className="text-info">No pending deliveries found.</p>;
+    return <p className="text-info text-center mt-6">No pending deliveries found.</p>;
 
   return (
-    <div className="px-4 py-6 w-full p-4 md:p-12 mx-auto">
+    <div className="px-4 py-6 w-full md:p-12 mx-auto">
       <h1 className="text-4xl font-bold text-secondary text-center mb-6">
         Pending Deliveries
       </h1>
@@ -125,7 +126,7 @@ const PendingDeliveries = () => {
 
       {/* Medium & Large Screen Table */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="min-w-full border border-info  rounded-lg text-sm">
+        <table className="min-w-full border border-info rounded-lg text-sm">
           <thead className="bg-primary text-neutral">
             <tr>
               <th className="p-2 border border-info">Token</th>
@@ -145,9 +146,7 @@ const PendingDeliveries = () => {
                 <td className="border border-info px-2 py-1 font-medium text-primary">
                   {parcel.token_id}
                 </td>
-                <td className="border border-info px-2 py-1 text-info">
-                  {parcel.title}
-                </td>
+                <td className="border border-info px-2 py-1 text-info">{parcel.title}</td>
                 <td className="border border-info px-2 py-1 text-info">
                   {parcel.sender_name}{" "}
                   <span className="text-info/70 text-xs">
@@ -176,18 +175,14 @@ const PendingDeliveries = () => {
                 <td className="border border-info px-2 py-1 flex gap-2">
                   {parcel.delivery_status === "assigned" ? (
                     <button
-                      onClick={() =>
-                        handleStatusUpdate(parcel._id, "in-transit")
-                      }
+                      onClick={() => handleStatusUpdate(parcel._id, "in-transit")}
                       className="bg-secondary text-neutral px-4 py-1 rounded hover:bg-secondary/90 transition"
                     >
                       Picked Up
                     </button>
                   ) : parcel.delivery_status === "in-transit" ? (
                     <button
-                      onClick={() =>
-                        handleStatusUpdate(parcel._id, "delivered")
-                      }
+                      onClick={() => handleStatusUpdate(parcel._id, "delivered")}
                       className="bg-green-500 text-neutral px-4 py-1 rounded hover:bg-green-600 transition"
                     >
                       Delivered
