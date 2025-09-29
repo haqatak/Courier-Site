@@ -19,11 +19,9 @@ import {
 } from "react-icons/fa";
 import useUserRole from "../Pages/DashBoard/MakeAdmin/useUserRole";
 import DashboardWrapper from "../Shared/DashboardWrapper/DashboardWrapper";
-import Loading2 from "../Shared/Loading/Loading2";
 
 const DashLayout = () => {
-  const { role, isLoading } = useUserRole();
-  if (isLoading) return <Loading2></Loading2>;
+  const { role } = useUserRole();
 
   return (
     <DashboardWrapper>

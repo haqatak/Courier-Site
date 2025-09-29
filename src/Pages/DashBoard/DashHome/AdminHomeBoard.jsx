@@ -13,15 +13,22 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { MdLocalShipping } from "react-icons/md";
+import {
+  MdLocalShipping,
+  MdCheckCircle,
+  MdPending,
+  MdCancel,
+  MdAccessTime,
+} from "react-icons/md";
+import { motion } from "framer-motion";
+import Loading2 from "../../../Shared/Loading/Loading2";
 
-// Create React Query client
+// React Query client
 const queryClient = new QueryClient();
 
-// Custom hook to fetch status counts
+// Fetch status counts
 function useStatusCounts() {
   const axiosSecure = AxiosHook();
-
   return useQuery({
     queryKey: ["statusCounts"],
     queryFn: async () => {
@@ -31,21 +38,47 @@ function useStatusCounts() {
   });
 }
 
-// Define colors for statuses
-const COLORS = ["#00C49F", "#0088FE", "#FFBB28", "#FF8042", "#8884d8", "#ff6666"];
+// Map status → icon
+const statusIcons = {
+  delivered: <MdCheckCircle className="text-secondary" />,
+  pending: <MdPending className="text-secondary" />,
+  cancelled: <MdCancel className="text-info" />,
+  transit: <MdLocalShipping className="text-accent" />,
+  delayed: <MdAccessTime className="text-secondary" />,
+};
 
-// Capitalize status labels
+// Define theme colors from DaisyUI
+// Define distinct colors for the pie slices
+const COLORS = [
+  "#4CAF50", // Green
+  "#2196F3", // Blue
+  "#FFC107", // Amber
+  "#F44336", // Red
+  "#9C27B0", // Purple
+  "#00BCD4", // Cyan
+  "#FF9800", // Orange
+];
+
+// Format status labels
 const formatStatus = (status) =>
   status
     .split("-")
     .map((word) => word[0].toUpperCase() + word.slice(1))
     .join(" ");
 
+// Pie chart
 function StatusPieChart({ data }) {
   return (
-    <div className="p-4 bg-white shadow rounded w-full max-w-2xl mx-auto">
-      <h2 className="text-xl font-semibold mb-4">📊 Parcel Delivery Status Chart</h2>
-      <ResponsiveContainer width="100%" height={300}>
+    <motion.div
+      className="p-6 bg-accent shadow-lg rounded-2xl w-full max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+    >
+      <h2 className="text-2xl font-bold mb-6 text-center text-secondary">
+        📊 Parcel Delivery Status
+      </h2>
+      <ResponsiveContainer width="100%" height={320}>
         <PieChart>
           <Pie
             data={data}
@@ -53,48 +86,73 @@ function StatusPieChart({ data }) {
             nameKey="status"
             cx="50%"
             cy="50%"
-            outerRadius={100}
+            outerRadius={110}
             label={({ status }) => formatStatus(status)}
           >
             {data?.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell
+                key={`cell-${index}`}
+                fill={COLORS[index % COLORS.length]} // now using distinct colors
+              />
             ))}
           </Pie>
           <Tooltip formatter={(value) => [`${value}`, "Parcels"]} />
           <Legend />
         </PieChart>
       </ResponsiveContainer>
-    </div>
+    </motion.div>
   );
 }
 
+// Status list with animation
 function StatusList({ data }) {
   return (
-    <div className="p-4 mt-6 bg-white shadow rounded w-full max-w-2xl mx-auto">
-      <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
-        <MdLocalShipping className="text-blue-600" />
+    <motion.div
+      className="p-6 mt-8 bg-accent shadow-lg rounded-2xl w-full max-w-4xl mx-auto"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-secondary">
+        <MdLocalShipping className="text-secondary" />
         Delivery Status Breakdown
       </h2>
-      <ul className="space-y-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         {data?.map(({ status, count }) => (
-          <li key={status} className="text-gray-700">
-            <strong className="capitalize">{formatStatus(status)}</strong>: {count}
-          </li>
+          <motion.div
+            key={status}
+            className="flex items-center justify-between p-4 rounded-xl border bg-neutral border-base-300    hover:shadow-lg cursor-pointer"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <div className="flex items-center gap-3">
+              {statusIcons[status] || (
+                <MdLocalShipping className="text-secondary" />
+              )}
+              <span className="font-semibold text-primary">
+                {formatStatus(status)}
+              </span>
+            </div>
+            <span className="text-lg font-bold text-secondary">{count}</span>
+          </motion.div>
         ))}
-      </ul>
-    </div>
+      </div>
+    </motion.div>
   );
 }
 
-// Main Component
+// Main Dashboard
 function StatusDashboard() {
   const { data, isPending, error } = useStatusCounts();
 
-  if (isPending) return <p className="text-center mt-8">Loading status data...</p>;
-  if (error) return <p className="text-center mt-8 text-red-500">Error: {error.message}</p>;
+  if (isPending) return <Loading2></Loading2>;
+  if (error)
+    return (
+      <p className="text-center mt-8 text-red-500">❌ Error: {error.message}</p>
+    );
 
   return (
-    <div className="py-8 px-4">
+    <div className="py-10 px-4 flex flex-col items-center">
       <StatusPieChart data={data} />
       <StatusList data={data} />
     </div>

@@ -3,6 +3,7 @@ import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 import AxiosHook from "../../../Hooks/AxiosHook";
 import { useQuery } from "@tanstack/react-query";
 import PaymentHistoryTable from "./PaymentHistoryTable";
+import Loading2 from "../../../Shared/Loading/Loading2";
 
 const PaymentHistory = () => {
   const { user } = useContext(AuthContext);
@@ -17,12 +18,16 @@ const PaymentHistory = () => {
     enabled: !!user?.email, // ensures query runs only if email exists
   });
 
+  if (isPending) {
+    return <Loading2 />; // ✅ show Lottie loading instead of spinner
+  }
+
   return (
     <div className="px-3 md:px-8 my-8 md:my-12">
       <h1 className="text-4xl font-bold text-secondary text-center mb-6">
         Payment History
       </h1>
-      <PaymentHistoryTable payments={payments} loading={isPending} />
+      <PaymentHistoryTable payments={payments} />
     </div>
   );
 };
