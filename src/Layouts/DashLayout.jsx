@@ -28,7 +28,7 @@ const DashLayout = () => {
       <div className="max-w-screen-xl mx-auto">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content bg-neutral flex flex-col">
+          <div className="drawer-content bg-base-100 min-h-screen flex flex-col">
             {/* Page content here */}
             <div className="navbar bg-accent w-full lg:hidden">
               <div className="flex-none">
