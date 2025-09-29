@@ -1,11 +1,22 @@
 import React from "react";
 import { FaEye, FaTrashAlt, FaMoneyBillAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
+
+const tableVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
 
 const ParcelTable = ({ parcels, onView, onPay, onDelete }) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="table table-zebra w-full">
-        <thead className="bg-base-200 text-base font-semibold">
+    <motion.div
+      className="overflow-x-auto"
+      initial="hidden"
+      animate="show"
+      variants={tableVariants}
+    >
+      <table className="table w-full shadow-md rounded-xl overflow-hidden">
+        <thead className="bg-primary text-neutral font-semibold text-lg">
           <tr>
             <th>#</th>
             <th>Type</th>
@@ -16,63 +27,80 @@ const ParcelTable = ({ parcels, onView, onPay, onDelete }) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <motion.tbody
+          initial="hidden"
+          animate="show"
+          variants={{
+            show: {
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+        >
           {parcels.length === 0 ? (
             <tr>
-              <td colSpan="6" className="text-center py-6">
+              <td colSpan="7" className="text-center py-6 text-info font-medium">
                 No parcels found.
               </td>
             </tr>
           ) : (
             parcels?.map((parcel, index) => (
-              <tr key={parcel._id}>
+              <motion.tr
+                key={parcel._id}
+                variants={tableVariants}
+                className="hover:bg-primary/40 bg-accent transition-colors duration-300"
+              >
                 <td>{index + 1}</td>
                 <td className="capitalize">{parcel.type}</td>
                 <td className="max-w-[180px] truncate">{parcel.title}</td>
                 <td>{new Date(parcel.creation_date).toLocaleString()}</td>
-                <td>৳{parcel.cost}</td>
+                <td className="font-semibold text-secondary">৳{parcel.cost}</td>
                 <td>
                   <span
-                    className={`badge ${
+                    className={`badge px-3 py-2 rounded-lg text-sm ${
                       parcel.payment_status === "paid"
-                        ? "badge-success"
-                        : "badge-error"
-                    } badge-md text-white`}
+                        ? "bg-primary text-neutral"
+                        : "bg-secondary text-neutral"
+                    }`}
                   >
                     {parcel.payment_status}
                   </span>
                 </td>
                 <td className="flex gap-2">
-                  <button
-                    className="btn btn-sm btn-info text-white tooltip"
-                    data-tip="View Details"
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="btn btn-sm bg-secondary border-none text-neutral rounded-lg shadow-md"
                     onClick={() => onView(parcel)}
                   >
                     <FaEye />
-                  </button>
+                  </motion.button>
+
                   {parcel.payment_status !== "paid" && (
-                    <button
-                      className="btn btn-sm btn-success text-white tooltip"
-                      data-tip="Pay Now"
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="btn btn-sm bg-primary border-none text-neutral rounded-lg shadow-md"
                       onClick={() => onPay(parcel)}
                     >
                       <FaMoneyBillAlt />
-                    </button>
+                    </motion.button>
                   )}
-                  <button
-                    className="btn btn-sm btn-error text-white tooltip"
-                    data-tip="Delete"
+
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="btn btn-sm bg-accent border-none text-info rounded-lg shadow-md"
                     onClick={() => onDelete(parcel)}
                   >
                     <FaTrashAlt />
-                  </button>
+                  </motion.button>
                 </td>
-              </tr>
+              </motion.tr>
             ))
           )}
-        </tbody>
+        </motion.tbody>
       </table>
-    </div>
+    </motion.div>
   );
 };
 

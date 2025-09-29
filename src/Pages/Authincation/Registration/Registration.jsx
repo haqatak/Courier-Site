@@ -139,7 +139,7 @@ const Registration = () => {
               Password must be atleast 6 Charecters
             </p>
           )}
-          <button className="btn btn-secondary my-3">Registration</button>
+          <button className="btn btn-secondary btn-outline my-3">Registration</button>
           <p>
             Already have an acoount?
             <Link to="/logIn" className="btn-link text-secondary ml-3">

@@ -30,7 +30,7 @@ const DashLayout = () => {
       <div className="max-w-screen-xl mx-auto">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content flex flex-col">
+          <div className="drawer-content bg-neutral flex flex-col">
             {/* Page content here */}
             <div className="navbar bg-accent w-full lg:hidden">
               <div className="flex-none">
@@ -54,7 +54,12 @@ const DashLayout = () => {
                   </svg>
                 </label>
               </div>
-              <div className="mx-2 flex-1 px-2">Dashboard</div>
+              <div className="mx-2 flex-1 px-2 flex items-center justify-between">
+                <h2 className="text-primary text-2xl font-semibold">
+                  DashBoard
+                </h2>{" "}
+                <Logo></Logo>
+              </div>
             </div>
             {/* Page content here */}
             <Outlet></Outlet>
@@ -66,7 +71,7 @@ const DashLayout = () => {
               className="drawer-overlay"
             ></label>
 
-            <ul className="menu bg-accent text-base-content min-h-full w-80 p-4">
+            <ul className="menu bg-accent text-primary font-bold min-h-full w-80 p-4">
               <li>
                 {" "}
                 <Logo></Logo>
@@ -75,7 +80,13 @@ const DashLayout = () => {
               <li>
                 <Link to={"/"}>
                   <FiHome style={{ marginRight: 8 }} />
-                  Home
+                  Back to Home
+                </Link>
+              </li>{" "}
+              <li>
+                <Link to={"/dashBoard"}>
+                  <FiHome style={{ marginRight: 8 }} />
+                  Dash Layout
                 </Link>
               </li>
               <li>

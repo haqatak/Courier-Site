@@ -61,8 +61,8 @@ const MyParcels = () => {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">My Parcels</h2>
+    <div className="px-2 md:px-10 w-full my-8 md:my-12">
+      <h2 className="text-4xl text-center text-secondary font-bold mb-4">My Parcels</h2>
       {isLoading ? (
         <p className="text-center">Loading...</p>
       ) : (

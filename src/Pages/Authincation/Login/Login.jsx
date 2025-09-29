@@ -32,7 +32,8 @@ const Login = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <fieldset className="">
             <h1 className="text-5xl font-bold text-primary my-3">Login now!</h1>
-            <label className="label text-secondary">Email</label><br />
+            <label className="label text-secondary">Email</label>
+            <br />
             <input
               type="email"
               className="input"
@@ -40,7 +41,8 @@ const Login = () => {
               placeholder="Email"
             />
 
-            <label className="label text-secondary">Password</label><br />
+            <label className="label text-secondary">Password</label>
+            <br />
             <input
               type="password"
               className="input"
@@ -58,7 +60,7 @@ const Login = () => {
                 Password must be atleast 6 Charecters
               </p>
             )}
-            <button className="w-full btn btn-secondary my-4 ">Login</button>
+            <button className="w-full btn btn-secondary btn-outline my-4 ">Login</button>
             <p className="text-info">
               Don't have an acoount?
               <Link to="/registration" className="btn-link text-secondary ml-3">
