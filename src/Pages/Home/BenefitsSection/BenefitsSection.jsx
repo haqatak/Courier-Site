@@ -36,17 +36,17 @@ const cardVariants = {
 
 const BenefitsSection = () => {
   return (
-    <div className="m-3 md:my-12">
+    <div className="m-3 my-8 md:my-12">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">
         Benefits of <span className="text-secondary">Choosing Us</span>
       </h2>
 
-      <section className="bg-accent py-12 px-4 md:px-10">
+      <section className="py-12 px-4">
         <div className="space-y-8">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              className="card lg:card-side bg-[#f1f1f1] shadow-xl overflow-hidden"
+              className="card lg:card-side bg-[#e8eae3] shadow-xl overflow-hidden"
               custom={index}
               initial="hidden"
               whileInView="visible"

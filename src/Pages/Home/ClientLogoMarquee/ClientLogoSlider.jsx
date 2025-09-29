@@ -1,5 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import { motion } from "framer-motion";
 
 // Import logos
 import logo1 from "../../../assets/brands/amazon.png";
@@ -12,34 +13,49 @@ import logo7 from "../../../assets/brands/start.png";
 
 const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7];
 
+// Motion variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7 } },
+};
+
 const ClientLogoSlider = () => {
   return (
-    <div>
-      {" "}
-      <h2 className="text-xl md:text-3xl font-bold text-center mb-6">
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="w-full"
+    >
+      {/* Heading */}
+      <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-6">
         We've helped thousands of{" "}
         <span className="text-secondary">sales teams</span>
       </h2>
+
+      {/* Slider Section */}
       <div
-        data-aos="zoom-out-down"
-        className="py-10 bg- px-4 md:px-8 lg:px-16 m-3 md:my-12 text-secondary bg-[#f1f1f1]"
+        className="py-6 px-2 md:px-8 lg:px-12 rounded-2xl bg-[#f1f1f1] shadow-md"
       >
-        <Marquee speed={50} gradient={false} pauseOnHover={true}>
+        <Marquee speed={40} gradient={false} pauseOnHover={true}>
           {logos.map((logo, index) => (
-            <div
+            <motion.div
               key={index}
-              className="flex items-center justify-center mx-12 md:mx-20"
+              className="flex items-center justify-center mx-6 sm:mx-10 md:mx-14"
+              whileHover={{ scale: 1.1 }}
+              transition={{ type: "spring", stiffness: 200 }}
             >
               <img
                 src={logo}
                 alt={`Client ${index + 1}`}
-                className="h-7 w-auto object-contain"
+                className="h-6 sm:h-8 md:h-10 w-auto object-contain"
               />
-            </div>
+            </motion.div>
           ))}
         </Marquee>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -11,43 +11,70 @@ import {
   faTachometerAlt,
   faMotorcycle,
 } from "@fortawesome/free-solid-svg-icons";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   const handleLogout = () => {
     logOut()
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then(() => {
+        toast.success("Logged out successfully 👋");
+      })
+      .catch(() => {
+        toast.error("Logout failed. Try again!");
+      });
   };
 
   const links = (
     <>
       <li className="text-primary font-bold flex items-center gap-2">
-        <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/"}>
-          <FontAwesomeIcon icon={faHouse} /> Home
+        <NavLink
+          className={({ isActive }) => (isActive ? "underline" : "")}
+          to={"/"}
+        >
+          <FontAwesomeIcon icon={faHouse} className="text-secondary" /> Home
         </NavLink>
       </li>
       <li className="text-primary font-bold flex items-center gap-2">
-        <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/coverage"}>
-          <FontAwesomeIcon icon={faMapLocationDot} /> Coverage
+        <NavLink
+          className={({ isActive }) => (isActive ? "underline" : "")}
+          to={"/coverage"}
+        >
+          <FontAwesomeIcon icon={faMapLocationDot} className="text-secondary" />{" "}
+          Coverage
         </NavLink>
       </li>
       <li className="text-primary font-bold flex items-center gap-2">
-        <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/sendParcel"}>
-          <FontAwesomeIcon icon={faBoxOpen} /> Send Parcel
+        <NavLink
+          className={({ isActive }) => (isActive ? "underline" : "")}
+          to={"/sendParcel"}
+        >
+          <FontAwesomeIcon icon={faBoxOpen} className="text-secondary" /> Send
+          Parcel
         </NavLink>
       </li>
       {user && (
         <li className="text-primary font-bold flex items-center gap-2">
-          <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/dashBoard"}>
-            <FontAwesomeIcon icon={faTachometerAlt} /> Dash Board
+          <NavLink
+            className={({ isActive }) => (isActive ? "underline" : "")}
+            to={"/dashBoard"}
+          >
+            <FontAwesomeIcon
+              icon={faTachometerAlt}
+              className="text-secondary"
+            />{" "}
+            Dash Board
           </NavLink>
         </li>
       )}
       <li className="text-primary font-bold flex items-center gap-2">
-        <NavLink className={({ isActive }) => (isActive ? "underline" : "")} to={"/beARider"}>
-          <FontAwesomeIcon icon={faMotorcycle} /> Be A Rider
+        <NavLink
+          className={({ isActive }) => (isActive ? "underline" : "")}
+          to={"/beARider"}
+        >
+          <FontAwesomeIcon icon={faMotorcycle} className="text-secondary" /> Be
+          A Rider
         </NavLink>
       </li>
     </>
@@ -67,12 +94,17 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-accent rounded-box mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-accent rounded-box mt-3 w-52 p-2 shadow flex flex-col items-start"
           >
             {links}
           </ul>
@@ -101,7 +133,10 @@ const Navbar = () => {
             Log Out
           </button>
         ) : (
-          <Link className="btn btn-primary btn-outline hover:text-accent" to="/login">
+          <Link
+            className="btn btn-primary btn-outline hover:text-accent"
+            to="/login"
+          >
             Login
           </Link>
         )}

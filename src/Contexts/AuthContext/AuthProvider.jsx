@@ -10,7 +10,12 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../Firebase/Firebase.init";
+
+// ✅ Force account selection
 const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -27,6 +32,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const googleUser = () => {
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -42,7 +48,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      // console.log("user in the auth state change", createUser);
       setLoading(false);
     });
     return () => {
@@ -63,9 +68,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <div>
-      <AuthContext value={authInfo}>{children}</AuthContext>
-    </div>
+    <AuthContext value={authInfo}>{children}</AuthContext>
   );
 };
 

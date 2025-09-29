@@ -100,7 +100,7 @@ const DashLayout = () => {
                   Payment History
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link to={"/dashboard/track"}>
                   <FiMapPin className="text-secondary mr-2" />
                   Track a Package
@@ -111,7 +111,7 @@ const DashLayout = () => {
                   <FiUser className="text-secondary mr-2" />
                   Update Profile
                 </Link>
-              </li>
+              </li> */}
 
               {/* Rider Links */}
               {role === "rider" && (

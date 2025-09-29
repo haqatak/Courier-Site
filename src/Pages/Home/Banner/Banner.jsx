@@ -22,16 +22,12 @@ const Banner = () => {
       >
         <div>
           <img src={img1} alt="Banner 1" className="rounded-2xl" />
-          {/* Optional legend */}
-          <p className="legend">Legend 1</p>
         </div>
         <div>
           <img src={img2} alt="Banner 2" className="rounded-2xl" />
-          <p className="legend">Legend 2</p>
         </div>
         <div>
           <img src={img3} alt="Banner 3" className="rounded-2xl" />
-          <p className="legend">Legend 3</p>
         </div>
       </Carousel>
     </div>
