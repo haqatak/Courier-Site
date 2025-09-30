@@ -375,7 +375,7 @@ const SendParcel = () => {
         <div className="text-center">
           <button
             type="submit"
-            className="btn btn-secondary btn-outline bg-accent"
+            className="btn btn-secondary btn-outline bg-accent hover:text-info"
           >
             Submit Parcel
           </button>

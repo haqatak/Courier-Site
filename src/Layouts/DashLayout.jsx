@@ -1,12 +1,10 @@
 import React from "react";
-import { Link, Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 import Logo from "../Shared/Logo/Logo";
 import {
   FiHome,
   FiPackage,
   FiCreditCard,
-  FiMapPin,
-  FiUser,
   FiClock,
   FiCheckCircle,
 } from "react-icons/fi";
@@ -23,13 +21,24 @@ import DashboardWrapper from "../Shared/DashboardWrapper/DashboardWrapper";
 const DashLayout = () => {
   const { role } = useUserRole();
 
+  const navLinkClasses = ({ isActive }) =>
+    `flex items-center gap-2 px-2 py-2 rounded-md transition-all duration-200
+     ${
+       isActive
+         ? "bg-primary text-white font-semibold"
+         : "text-primary hover:text-info"
+     }`;
+
+  const iconClasses = ({ isActive }) =>
+    `${isActive ? "text-white" : "text-secondary"}`;
+
   return (
     <DashboardWrapper>
       <div className="max-w-screen-xl mx-auto">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content bg-base-100 min-h-screen flex flex-col">
-            {/* Page content here */}
+            {/* Mobile Navbar */}
             <div className="navbar bg-accent w-full lg:hidden">
               <div className="flex-none">
                 <label
@@ -55,13 +64,16 @@ const DashLayout = () => {
               <div className="mx-2 flex-1 px-2 flex items-center justify-between">
                 <h2 className="text-primary text-2xl font-semibold">
                   DashBoard
-                </h2>{" "}
-                <Logo></Logo>
+                </h2>
+                <Logo />
               </div>
             </div>
-            {/* Page content here */}
-            <Outlet></Outlet>
+
+            {/* Page Content */}
+            <Outlet />
           </div>
+
+          {/* Sidebar */}
           <div className="drawer-side">
             <label
               htmlFor="my-drawer-2"
@@ -77,62 +89,92 @@ const DashLayout = () => {
 
               {/* Common Links */}
               <li>
-                <Link to={"/"}>
-                  <FiHome className="text-secondary mr-2" />
-                  Back to Home
-                </Link>
+                <NavLink to="/" className={navLinkClasses}>
+                  {({ isActive }) => (
+                    <>
+                      <FiHome className={iconClasses({ isActive })} />
+                      Back to Home
+                    </>
+                  )}
+                </NavLink>
               </li>
               <li>
-                <Link to={"/dashboard"}>
-                  <FiHome className="text-secondary mr-2" />
-                  Dashboard
-                </Link>
+                <NavLink to="/dashboard" className={navLinkClasses}>
+                  {({ isActive }) => (
+                    <>
+                      <FiHome className={iconClasses({ isActive })} />
+                      Dashboard
+                    </>
+                  )}
+                </NavLink>
               </li>
               <li>
-                <Link to={"/dashboard/myParcel"}>
-                  <FiPackage className="text-secondary mr-2" />
-                  My Parcel
-                </Link>
+                <NavLink to="/dashboard/myParcel" className={navLinkClasses}>
+                  {({ isActive }) => (
+                    <>
+                      <FiPackage className={iconClasses({ isActive })} />
+                      My Parcel
+                    </>
+                  )}
+                </NavLink>
               </li>
               <li>
-                <Link to={"/dashboard/paymentHistory"}>
-                  <FiCreditCard className="text-secondary mr-2" />
-                  Payment History
-                </Link>
+                <NavLink
+                  to="/dashboard/paymentHistory"
+                  className={navLinkClasses}
+                >
+                  {({ isActive }) => (
+                    <>
+                      <FiCreditCard className={iconClasses({ isActive })} />
+                      Payment History
+                    </>
+                  )}
+                </NavLink>
               </li>
-              {/* <li>
-                <Link to={"/dashboard/track"}>
-                  <FiMapPin className="text-secondary mr-2" />
-                  Track a Package
-                </Link>
-              </li>
-              <li>
-                <Link to={"/dashboard/profile"}>
-                  <FiUser className="text-secondary mr-2" />
-                  Update Profile
-                </Link>
-              </li> */}
 
               {/* Rider Links */}
               {role === "rider" && (
                 <>
                   <li>
-                    <Link to={"/dashboard/pendingDeliveries"}>
-                      <FaTasks className="text-secondary mr-2" />
-                      Pending Deliveries
-                    </Link>
+                    <NavLink
+                      to="/dashboard/pendingDeliveries"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FaTasks className={iconClasses({ isActive })} />
+                          Pending Deliveries
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                   <li>
-                    <Link to={"/dashboard/completedDeliveries"}>
-                      <FaCheckCircle className="text-secondary mr-2" />
-                      Completed Deliveries
-                    </Link>
+                    <NavLink
+                      to="/dashboard/completedDeliveries"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FaCheckCircle
+                            className={iconClasses({ isActive })}
+                          />
+                          Completed Deliveries
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                   <li>
-                    <Link to={"/dashboard/myEarnigs"}>
-                      <FaWallet className="text-secondary mr-2" />
-                      My Earnings
-                    </Link>
+                    <NavLink
+                      to="/dashboard/myEarnigs"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FaWallet className={iconClasses({ isActive })} />
+                          My Earnings
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                 </>
               )}
@@ -141,28 +183,58 @@ const DashLayout = () => {
               {role === "admin" && (
                 <>
                   <li>
-                    <Link to="/dashboard/assignRider">
-                      <FaMotorcycle className="text-secondary mr-2" />
-                      Assign Rider
-                    </Link>
+                    <NavLink
+                      to="/dashboard/assignRider"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FaMotorcycle className={iconClasses({ isActive })} />
+                          Assign Rider
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                   <li>
-                    <Link to="/dashboard/activeRiders">
-                      <FiCheckCircle className="text-secondary mr-2" />
-                      Active Riders
-                    </Link>
+                    <NavLink
+                      to="/dashboard/activeRiders"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FiCheckCircle
+                            className={iconClasses({ isActive })}
+                          />
+                          Active Riders
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                   <li>
-                    <Link to="/dashboard/pendingRiders">
-                      <FiClock className="text-secondary mr-2" />
-                      Pending Riders
-                    </Link>
+                    <NavLink
+                      to="/dashboard/pendingRiders"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FiClock className={iconClasses({ isActive })} />
+                          Pending Riders
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                   <li>
-                    <Link to="/dashboard/make-admin">
-                      <FaUserShield className="text-secondary mr-2" />
-                      Make Admin
-                    </Link>
+                    <NavLink
+                      to="/dashboard/make-admin"
+                      className={navLinkClasses}
+                    >
+                      {({ isActive }) => (
+                        <>
+                          <FaUserShield className={iconClasses({ isActive })} />
+                          Make Admin
+                        </>
+                      )}
+                    </NavLink>
                   </li>
                 </>
               )}
