@@ -25,12 +25,12 @@ const DashLayout = () => {
     `flex items-center gap-2 px-2 py-2 rounded-md transition-all duration-200
      ${
        isActive
-         ? "bg-primary text-white font-semibold"
+         ? "bg-primary text-neutral font-semibold"
          : "text-primary hover:text-info"
      }`;
 
   const iconClasses = ({ isActive }) =>
-    `${isActive ? "text-white" : "text-secondary"}`;
+    `${isActive ? "text-neutral" : "text-secondary"}`;
 
   return (
     <DashboardWrapper>

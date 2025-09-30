@@ -1,10 +1,10 @@
 import React from "react";
 import useUserRole from "../MakeAdmin/useUserRole";
-import Loading from "../../../Shared/Loading/Loading";
 import UserDashBoard from "./UserDashBoard";
 import RiderHomeBoard from "./RiderHomeBoard";
 import AdminHomeBoard from "./AdminHomeBoard";
 import Unauthorized from "../../Unauthorized/Unauthorized";
+import Loading2 from "../../../Shared/Loading/Loading2";
 
 const DashHome = () => {
   const { role, isLoading } = useUserRole();
@@ -12,7 +12,7 @@ const DashHome = () => {
   if (isLoading) {
     return (
       <div>
-        <Loading></Loading>
+        <Loading2></Loading2>
       </div>
     );
   }

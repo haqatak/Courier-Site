@@ -24,6 +24,7 @@ const Coverage = () => {
       <h1 className="text-3xl md:text-4xl font-bold text-center text-secondary mb-2">
         We Are Available in 64 Districts
       </h1>
+      <p className="text-primary font-semibold">Search your home town</p>
       <MapSearch
         searchTerm={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}

@@ -192,7 +192,9 @@ const SendParcel = () => {
 
   return (
     <div className="px-6 max-w-7xl mx-auto space-y-5 my-8">
-      <h1 className="text-3xl font-bold text-center text-secondary">Parcel Form</h1>
+      <h1 className="text-3xl font-bold text-center text-secondary">
+        Parcel Form
+      </h1>
       <p className="text-center text-primary">
         Door to door delivery made easy
       </p>
@@ -232,7 +234,8 @@ const SendParcel = () => {
           </div>
 
           <div className="form-control mt-4">
-            <label className="label text-info">Title</label><br />
+            <label className="label text-info">Title</label>
+            <br />
             <input
               type="text"
               {...register("title", { required: true })}
@@ -246,7 +249,8 @@ const SendParcel = () => {
 
           {parcelType === "non-document" && (
             <div className="form-control mt-4">
-              <label className="text-info label">Weight (kg)</label><br />
+              <label className="text-info label">Weight (kg)</label>
+              <br />
               <input
                 type="number"
                 step="0.01"
@@ -381,6 +385,11 @@ const SendParcel = () => {
           </button>
         </div>
       </form>
+      <p className="text-primary text-xl font-semibold">
+        After submitting the form, you will be automatically redirected to the
+        payment page. You can also choose to pay later, but please note that the
+        courier will only process your parcel after the payment is completed.
+      </p>
     </div>
   );
 };
